@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Prediction System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #141e30, #243b55);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b55;
+            font-size: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 25px;
+            background: #243b55;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #141e30;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            background: #e8f4ff;
+            border-radius: 8px;
+            color: #243b55;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info {
+            text-align: center;
+            color: gray;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Traffic Prediction System</h1>
+
+    <p class="info">
+        Enter the details to predict traffic level
+    </p>
+
+    <form method="POST">
+
+        <label>Hour (0-23)</label>
+        <input type="number" name="hour"
+               min="0" max="23" required>
+
+        <label>Day Of Week</label>
+        <select name="day" required>
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesday</option>
+            <option value="3">Thursday</option>
+            <option value="4">Friday</option>
+            <option value="5">Saturday</option>
+            <option value="6">Sunday</option>
+        </select>
+
+        <label>Weather</label>
+        <select name="weather" required>
+            <option value="0">Sunny</option>
+            <option value="1">Rainy</option>
+            <option value="2">Cloudy</option>
+        </select>
+
+        <label>Vehicle Count</label>
+        <input type="number" name="vehicle_count"
+               min="0" required>
+
+        <button type="submit">
+            Predict Traffic
+        </button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        Predicted Traffic: {{ prediction }}
+    </div>
+    {% endif %}
+
+</div>
+</body>
+</html>
